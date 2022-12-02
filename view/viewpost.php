@@ -3,6 +3,20 @@
 ?>
 <!DOCTYPE html>
 <html>
+    <head>
+        <?php
+            include "../mysql_connect.php";
+            $link = mysqli_connect($server, $user, $pw, $db);
+            if(!$link) {
+                die("Connection failed: " . mysqli_connect_error());
+            }
+            $sql = "select * from item where itemID = " . $_GET['itemid'] . ";";
+            $res = mysqli_query($link,$sql);
+            $result = mysqli_fetch_assoc($res);
+            echo '<title>' . $result['name'] . '</title>';
+        ?>
+    </head>
+    <body>
     <?php
         include "../mysql_connect.php";
         $link = mysqli_connect($server, $user, $pw, $db);
@@ -12,7 +26,7 @@
         $sql = "select * from item where itemID = " . $_GET['itemid'] . ";";
         $res = mysqli_query($link,$sql);
         $result = mysqli_fetch_assoc($res);
-        echo '<p>' . $result['name'] . '</p>';
+        echo '<p><b>' . $result['name'] . '</b></p>';
         echo '<p>Item description:' . $result['description'] . '</p>';
         echo '<p>Type:' . ($result['type'] == 0 ? 'found item' : 'lost item') . '</p>';
         echo '<p>Found/Lost place:' . $result['place'] . '</p>';
@@ -29,4 +43,8 @@
             echo "<p><img src='../" . $row['url'] . "' style='max-width: 500px;'/></p>";
         }
     ?>
+    <form action="../index.php">
+        <input type="submit" value="Homepage" />
+    </form>
+    </body>
 </html>

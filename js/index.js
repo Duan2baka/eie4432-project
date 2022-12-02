@@ -66,7 +66,8 @@ $(function(){
 				processData: false,
 				contentType: false,
 				success: function(response) {
-					console.log(response);
+					var jsonData = JSON.parse(response);
+					location.href = jsonData.url;
 				}
 			});
 			return false;
