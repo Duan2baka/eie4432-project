@@ -18,7 +18,7 @@
         <script src="https://code.jquery.com/jquery.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <?php
-            $_SESSION['status'] = "find";
+            $_SESSION['status'] = "report";
             if (isset($_SESSION['islogin'])){
                 echo "<h1>Hi! " . $_SESSION['username'] . "</h1>";
                 echo "<div><button class=\"button\" onclick=\"javascript:window.location.href='/post.php'\">Post new thread</button></div>";

@@ -37,13 +37,14 @@
                 echo "<h1>Hi! " . $_SESSION['username'] . "</h1>";
                 echo "<div><button class=\"button\" onclick=\"javascript:window.location.href='/logout.php'\">Logout</button></div>";
                 echo "<div><button class=\"button\" onclick=\"javascript:window.location.href='/report.php'\">Report Lost Item</button></div>";
-                echo "<div><button class=\"button\" onclick=\"javascript:window.location.href='/find.php'\">Find Lost Item</button></div>";
+                echo "<div><button class=\"button\" onclick=\"javascript:window.location.href='/find.php'\">Find My Item</button></div>";
             }
             else{
                 echo "<h1>Hi! Please login first!</h1>";
                 echo "<div><button class=\"button\" onclick=\"javascript:window.location.href='/login.php'\">Login</button></div>";
                 echo "<div><button class=\"button\" onclick=\"javascript:window.location.href='/register.php'\">Sign up</button></div>";
             }
+            echo "<div><button class=\"button\" onclick=\"javascript:window.location.href='/view/viewall.php'\">View all posts</button></div>";
         ?>
     </body>
 </html>
