@@ -1,7 +1,7 @@
 <?php
     session_start(); 
     if (isset($_SESSION['islogin'])){
-        header("Location: /message_page/already_login.php");
+        header("Location: /message_page/already_login.html");
     }
 ?>
 <!DOCTYPE html>
