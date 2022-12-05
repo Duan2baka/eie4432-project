@@ -1,8 +1,8 @@
 <?php
     session_start();
     include "mysql_connect.php";
-    $username = $_POST['username']?$_POST['username']:'';
-    $password = $_POST['password']?$_POST['password']:'';
+    $username = isset($_POST['username'])?$_POST['username']:'';
+    $password = isset($_POST['password'])?$_POST['password']:-1;
     $link = mysqli_connect($server, $user, $pw, $db);
     if(!$link) {
         die("Connection failed: " . mysqli_connect_error());
@@ -18,6 +18,10 @@
         $_SESSION['id'] = $result['userID'];
         $_SESSION['role'] = $result['role'];
         $_SESSION['islogin'] = 1;
+        if (isset($_POST['checkbox']) && $_POST['checkbox'] == 'remember-me') {
+            setcookie("username", $username, time() + (60 * 60 * 24));
+            setcookie("password", $password , time() + (60 * 60 * 24));
+        }
         header("Location: index.php");
     }else{
         header("Location: login.php");
